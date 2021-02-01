@@ -1,0 +1,13 @@
+parted -a optimal /dev/sda
+mklabel gpt
+unit mib
+mkpart primary 1 3
+name 1 grub
+set 1 bios_grub on
+mkpart primary 3 131
+name 2 boot
+mkpart primary 131 1155
+name 3 swap
+mkpart primary 1155 65155
+name 4 rootfs
+set 2 boot on
